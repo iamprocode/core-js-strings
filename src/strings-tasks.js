@@ -166,8 +166,9 @@ function repeatString(str, times) {
  *   removeFirstOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  // console.log(str.indexOf(value));
+  return str.replace(value, '');
 }
 
 /**
@@ -182,8 +183,22 @@ function removeFirstOccurrences(/* str, value */) {
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeLastOccurrences(str, value) {
+  // длина искомого значения
+  const len = value.length;
+  // находим идекс последнего входждения
+  const lastIn = str.lastIndexOf(value);
+  // console.log(lastIn + len);
+  // console.log(lastIn + len, str.length);
+  const firstPart = str.slice(0, lastIn);
+  const secondPart = str.slice(lastIn + len, str.length);
+  if (lastIn < 0) {
+    return str;
+  }
+  if (lastIn + len === str.length) {
+    return firstPart;
+  }
+  return firstPart + secondPart;
 }
 
 /**
@@ -198,8 +213,17 @@ function removeLastOccurrences(/* str, value */) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(/* str */) {
-  throw new Error('Not implemented');
+function sumOfCodes(str) {
+  let i = 0;
+  let sum = 0;
+  if (str) {
+    while (i < str.length - 0) {
+      sum += str.charCodeAt(i);
+      // console.log(i, str[i], sum);
+      i += 1;
+    }
+  }
+  return sum;
 }
 
 /**
@@ -213,8 +237,8 @@ function sumOfCodes(/* str */) {
  *   startsWith('Hello World', 'World') => false
  *   startsWith('Hello World', 'Hello') => true
  */
-function startsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function startsWith(str, substr) {
+  return str.startsWith(substr);
 }
 
 /**
@@ -228,8 +252,8 @@ function startsWith(/* str, substr */) {
  *   endsWith('Hello World', 'World') => true
  *   endsWith('Hello World', 'Hello') => false
  */
-function endsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function endsWith(str, substr) {
+  return str.endsWith(substr);
 }
 
 /**
@@ -245,8 +269,11 @@ function endsWith(/* str, substr */) {
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(/* minutes, seconds */) {
-  throw new Error('Not implemented');
+function formatTime(minutes, seconds) {
+  // console.log(minutes.toString().padStart(2, '0'));
+  const min = minutes.toString().padStart(2, '0');
+  const sec = seconds.toString().padStart(2, '0');
+  return `${min}:${sec}`;
 }
 
 /**
@@ -259,8 +286,14 @@ function formatTime(/* minutes, seconds */) {
  *   reverseString('abcdef') => 'fedcba'
  *   reverseString('12345') => '54321'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  // переводит строку в массив
+  // console.log(str.split(''));
+  //  ревеср строки
+  // console.log(str.split('').reverse());
+  // обьеденяем элементы массива в строку
+  // console.log(str.split('').reverse().join(''));
+  return str.split('').reverse().join('');
 }
 
 /**
