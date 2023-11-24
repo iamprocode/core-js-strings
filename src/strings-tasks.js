@@ -411,7 +411,7 @@ function isPalindrome(str) {
  *   findLongestWord('No words here') => 'words'
  */
 function findLongestWord(sentence) {
-  const long = sentence.split(' ').reduce(function (longest, currentWord) {
+  const long = sentence.split(' ').reduce(function fun(longest, currentWord) {
     return currentWord.length > longest.length ? currentWord : longest;
   }, '');
   return long;
@@ -433,7 +433,7 @@ function reverseWords(str) {
   const arrStr = str.split(' ');
   // Перебирая каждое слово в массиве - применяем к нему создаем подмассив, реверсируем и возвращая обратно строкой.
   const words = arrStr.map((word) => word.split('').reverse().join(''));
-  //console.log(words);
+  // console.log(words);
   // Обьеденяем все слова обратно в строку.
   const fin = words.join(' ');
   // console.log(fin);
