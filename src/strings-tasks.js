@@ -307,8 +307,14 @@ function reverseString(str) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(str) {
+  // переводит строку в массив
+  // console.log(str.split(''));
+  //  сортируем по алфавиту строки
+  // console.log(str.split('').sort());
+  // обьеденяем элементы массива в строку
+  // console.log(str.split('').reverse().join(''));
+  return str.split('').sort().join('');
 }
 
 /**
@@ -323,8 +329,8 @@ function orderAlphabetically(/* str */) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  return str.includes(substring);
 }
 
 /**
@@ -341,8 +347,20 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  /*
+    const vowels = ['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'];
+    let counter = 0;
+    for (const letter of str) {
+      if (vowels.includes(letter)) {
+        counter += 1;
+      }
+    }
+    return counter;
+  }
+  */
+  // console.log(str.replace(/[^aeiouyAEIOUY]/g, '').length);
+  return str.replace(/[^aeiouyAEIOUY]/g, '').length;
 }
 
 /**
@@ -358,8 +376,26 @@ function countVowels(/* str */) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  let strNew = str;
+  //  console.log(str.indexOf('!'));
+  if (str.indexOf('!') || str.indexOf('?') || str.indexOf(',')) {
+    strNew = str.replace(/[^\w]/g, '');
+    // console.log(strNew);
+  }
+  if (
+    strNew.toLowerCase() === strNew.split('').reverse().join('').toLowerCase()
+  ) {
+    /*
+       
+       console.log(
+         strNew.toLowerCase(),
+         strNew.split('').reverse().join('').toLowerCase()
+       ); */
+
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -374,11 +410,14 @@ function isPalindrome(/* str */) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+  const long = sentence.split(' ').reduce(function (longest, currentWord) {
+    return currentWord.length > longest.length ? currentWord : longest;
+  }, '');
+  return long;
 }
 
-/**
+/*
  * Returns the string where each word is reversed.
  *
  * @param {string} str - The input string.
@@ -388,8 +427,17 @@ function findLongestWord(/* sentence */) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
+function reverseWords(str) {
+  // создаем массив с разделителем пробел
+  // console.log(str.split(' '));
+  const arrStr = str.split(' ');
+  // Перебирая каждое слово в массиве - применяем к нему создаем подмассив, реверсируем и возвращая обратно строкой.
+  const words = arrStr.map((word) => word.split('').reverse().join(''));
+  //console.log(words);
+  // Обьеденяем все слова обратно в строку.
+  const fin = words.join(' ');
+  // console.log(fin);
+  return fin;
 }
 
 /**
