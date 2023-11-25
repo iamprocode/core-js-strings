@@ -559,7 +559,7 @@ function encodeToRot13(str) {
   const shifr = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
   for (let i = 0; i < str.length; i += 1) {
     if (norm.indexOf(str[i]) !== -1) {
-      console.log(norm.indexOf(str[i]));
+      // console.log(norm.indexOf(str[i]));
       newStr += shifr[norm.indexOf(str[i])];
     } else {
       newStr += str[i];
